@@ -1,0 +1,8 @@
+This is a minimal, bare-metal board support package for the Teensy 3.x
+MK20DX{128|256) boards from https://www.pjrc.com/
+
+Tested on Linux with https://launchpad.net/gcc-arm-embedded and on
+OpenBSD with ports/devel/arm-none-eabi/* (Linaro compiler)
+
+"make load" will use an installed teensy_loader_cli to download the
+firmware to an attached Teensy.
