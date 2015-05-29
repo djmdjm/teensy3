@@ -1,11 +1,14 @@
 This is a minimal, bare-metal board support package for the Teensy 3.x
-MK20DX{128|256) boards from https://www.pjrc.com/
+ARM Cortex-M4 MK20DX{128|256) boards from https://www.pjrc.com/ 
 
-Tested on Linux with https://launchpad.net/gcc-arm-embedded and on
-OpenBSD with ports/devel/arm-none-eabi/* (Linaro compiler)
+This is based on on work by Karl Lunt and Kevin Cuzner, but stripped
+back a bit further.
 
 "make load" will use an installed teensy_loader_cli to download the
 firmware to an attached Teensy.
 
 "make dump" will dump your program as assembler with interspersed
 code, which is handy when debugging or cycle-counting.
+
+Tested on Linux with https://launchpad.net/gcc-arm-embedded and on
+OpenBSD with ports/devel/arm-none-eabi/* (Linaro compiler)
