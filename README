@@ -6,3 +6,6 @@ OpenBSD with ports/devel/arm-none-eabi/* (Linaro compiler)
 
 "make load" will use an installed teensy_loader_cli to download the
 firmware to an attached Teensy.
+
+"make dump" will dump your program as assembler with interspersed
+code, which is handy when debugging or cycle-counting.
