@@ -1,16 +1,17 @@
 CPU=cortex-m4
 MCU=mk20dx256 # For teensy_loader_cli
 
-# Board support objects.
-BOARD_OBJS=arm_cm4.o crt0.o sysinit.o
-
 # Main program objects.
-OBJS=$(BOARD_OBJS) main.o
+OBJS=main.o
 
 CFLAGS= -Wall -g -fno-common -mthumb -mcpu=$(CPU)
 LDSCRIPT= board/Teensy31_flash.ld
 LDFLAGS= -nostartfiles -T$(LDSCRIPT) -mthumb -mcpu=$(CPU)
 ASFLAGS= -mcpu=$(CPU)
+
+# Board support objects.
+BOARD_OBJS=arm_cm4.o crt0.o sysinit.o
+VPATH=board
 
 # Tools
 AR = arm-none-eabi-ar
@@ -38,12 +39,5 @@ firmware.hex: firmware.elf
 firmware.S: firmware.elf
 	$(OBJDUMP) -S -D firmware.elf > firmware.S
 
-firmware.elf: $(OBJS)
-	$(CC) $(OBJS) $(LDFLAGS) -o $@
-
-# Board support; papering over differences between GNU and BSD make.
-arm_cm4.o: board/arm_cm4.c
-
-crt0.o: board/crt0.s
-
-sysinit.o: board/sysinit.c
+firmware.elf: $(BOARD_OBJS) $(OBJS)
+	$(CC) $(BOARD_OBJS) $(OBJS) $(LDFLAGS) -o $@
