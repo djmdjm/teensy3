@@ -12,3 +12,4 @@ code, which is handy when debugging or cycle-counting.
 
 Tested on Linux with https://launchpad.net/gcc-arm-embedded and on
 OpenBSD with ports/devel/arm-none-eabi/* (Linaro compiler)
+
